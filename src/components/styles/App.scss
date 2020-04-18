@@ -1,0 +1,28 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Raleway', sans-serif;
+}
+
+body {
+	background-color: #e8ffe8;
+}
+
+.header-bar {
+	background-color: #00e0ff;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	padding-top: 1vh;
+	border-bottom: 5px solid #74f9ff;
+}
+.weather-style {
+	margin: 10px;
+	height: 30em;
+	background-color: #a6fff2;
+}
+.gif-style {
+	margin: 10px;
+	height: 30em;
+	border: 1px solid #00e0ff;
+}
