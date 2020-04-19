@@ -16,13 +16,15 @@ body {
 	padding-top: 1vh;
 	border-bottom: 5px solid #74f9ff;
 }
-.weather-style {
-	margin: 10px;
-	height: 30em;
+
+.weather-content-style {
 	background-color: #a6fff2;
+	min-width: 100%;
+	text-align: center;
+	padding: 1em;
 }
-.gif-style {
-	margin: 10px;
-	height: 30em;
-	border: 1px solid #00e0ff;
+
+.gif {
+	min-width: 100%;
+	max-height: 32em;
 }

@@ -6,15 +6,25 @@ import SearchBar from './SearchBar';
 import Header from './Header';
 import Content from './Content';
 
+//kelvin to celsius helper function
+
 class App extends React.Component {
-	state = {};
+	state = { city: '' };
+
+	citySave = (city) => {
+		this.setState({ city: city });
+	};
 
 	render() {
 		return (
-			<div className="container-fluid ">
+			<div className="container">
 				<Header text="Joaquin Weather" icon="heart outline" />
-				<SearchBar placeholder="Write a location..." btnText="Search" />
-				<Content />
+				<SearchBar
+					placeholder="Write a location..."
+					btnText="Search"
+					submit={this.citySave}
+				/>
+				<Content city={this.state.city} />
 			</div>
 		);
 	}
