@@ -20,7 +20,7 @@ class Content extends React.Component {
 	getWeather = async (city) => {
 		try {
 			let response = await fetch(
-				`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=45b8a5fd049781c6a9430490973be29b`,
+				`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=45b8a5fd049781c6a9430490973be29b`,
 				{ mode: 'cors' },
 			);
 
