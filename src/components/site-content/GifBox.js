@@ -5,7 +5,7 @@ const randomNumber = () => {
 };
 
 class GifBox extends React.Component {
-	state = { gif: null, season: '' };
+	state = { gif: null, season: '', pending: true };
 
 	getGif = async (term) => {
 		try {
@@ -27,15 +27,23 @@ class GifBox extends React.Component {
 			if (
 				this.props.gif === 'hot summer' ||
 				this.props.gif === 'freezing' ||
-				this.props.gif === 'weather reporter'
+				this.props.gif === 'chilling'
 			) {
 				this.getGif(this.props.gif);
+				this.setState({ pending: false });
 			}
 		}
 	}
 	render() {
 		if (this.state.gif) {
 			return <img src={this.state.gif} className="img-fluid gif" />;
+		}
+		if (this.state.pending) {
+			return (
+				<div
+					className="d-flex align-items-center justify-content-center"
+					style={{ height: '15em' }}></div>
+			);
 		}
 		return (
 			<div

@@ -17,8 +17,8 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div className="container">
-				<Header text="Joaquin Weather" icon="heart outline" />
+			<div className="container-fluid">
+				<Header text="Joaquin Weather" />
 				<SearchBar
 					placeholder="Write a location..."
 					btnText="Search"

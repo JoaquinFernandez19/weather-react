@@ -1,7 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-	state = { value: '' };
+	state = { value: '', sended: '' };
 
 	handleInput = (e) => {
 		this.setState({ value: e.target.value });
@@ -9,7 +9,11 @@ class SearchBar extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.submit(this.state.value);
+		if (this.state.value !== this.state.sended) {
+			this.props.submit(this.state.value);
+		}
+
+		this.setState({ sended: this.state.value });
 	};
 
 	render() {

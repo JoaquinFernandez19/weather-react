@@ -28,12 +28,12 @@ class Content extends React.Component {
 
 			let season;
 
-			if (KtoC(data) >= 24) {
+			if (KtoC(data) >= 25) {
 				season = 'hot summer';
-			} else if (KtoC(data) <= 15) {
+			} else if (KtoC(data) <= 16) {
 				season = 'freezing';
 			} else {
-				season = 'weather reporter';
+				season = 'chilling';
 			}
 
 			this.setState({
@@ -42,6 +42,8 @@ class Content extends React.Component {
 				humidity: data.main.humidity,
 				general: data.weather[0].description,
 				city: city,
+				clouds: data.clouds.all,
+				iconInfo: data.weather[0].icon,
 				gifSeason: season,
 			});
 		} catch (error) {
@@ -63,10 +65,12 @@ class Content extends React.Component {
 
 	render() {
 		return (
-			<div className="row justify-content-center mt-5">
-				<div className="col-md-8 col-xs-12 text-center">
-					<Weather data={this.state} />
-					<GifBox gif={this.state.gifSeason} />
+			<div className="container">
+				<div className="row justify-content-center mt-5 row">
+					<div className="col-md-8 col-xs-12 text-center">
+						<Weather data={this.state} />
+						<GifBox gif={this.state.gifSeason} />
+					</div>
 				</div>
 			</div>
 		);

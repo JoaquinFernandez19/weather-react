@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBolt } from '@fortawesome/free-solid-svg-icons';
 
 const Header = (props) => {
 	return (
@@ -6,7 +8,7 @@ const Header = (props) => {
 			<div className="col text-center">
 				<h2>
 					{props.text}
-					<i className={`icon ${props.icon}`}></i>
+					<FontAwesomeIcon icon={faBolt} style={{ marginLeft: '10px' }} />
 				</h2>
 			</div>
 		</div>

@@ -2,11 +2,11 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Raleway', sans-serif;
 }
 
 body {
 	background-color: #e8ffe8;
+	font-family: 'Raleway', sans-serif;
 }
 
 .header-bar {
@@ -22,6 +22,27 @@ body {
 	min-width: 100%;
 	text-align: center;
 	padding: 1em;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+
+	.temp-style {
+		background-color: #00e0ff;
+		font-weight: bolder;
+		color: white;
+		padding-bottom: 5px;
+		font-family: 'Lobster', cursive;
+	}
+	.city-style {
+		border-bottom: 1px solid black;
+		padding-bottom: 2px;
+		font-family: 'Lobster', cursive;
+	}
+	p {
+		font-size: 20px;
+	}
+	img {
+		margin-top: -20px;
+	}
 }
 
 .gif {
