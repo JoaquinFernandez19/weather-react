@@ -1,49 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class SearchBar extends React.Component {
-	state = { value: '', sended: '' };
+const SearchBar = (props) => {
+	const [value, setValue] = useState('');
+	const [sended, setSended] = useState('');
 
-	handleInput = (e) => {
-		this.setState({ value: e.target.value });
+	const handleInput = (e) => {
+		setValue(e.target.value);
 	};
 
-	handleSubmit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (this.state.value !== this.state.sended) {
-			this.props.submit(this.state.value);
+		if (value !== sended) {
+			props.submit(value);
 		}
-
-		this.setState({ sended: this.state.value });
+		setSended(value);
 	};
 
-	render() {
-		return (
-			<div className="row search-row mt-5 mb-5 justify-content-center ">
-				<div className="col-auto">
-					<form onSubmit={this.handleSubmit}>
-						<div className="form-row align-items-center justify-content-center">
-							<div className="col-auto">
-								<input
-									type="text"
-									className="form-control mb-2"
-									placeholder="Moscu..."
-									onChange={this.handleInput}
-									value={this.state.value}
-									required
-								/>
-							</div>
-
-							<div className="col-auto">
-								<button type="submit" className="btn btn-primary mb-2">
-									Search
-								</button>
-							</div>
+	return (
+		<div className="row search-row mt-5 mb-5 justify-content-center ">
+			<div className="col-auto">
+				<form onSubmit={handleSubmit}>
+					<div className="form-row align-items-center justify-content-center">
+						<div className="col-auto">
+							<input
+								type="text"
+								className="form-control mb-2"
+								placeholder="Moscu..."
+								onChange={handleInput}
+								value={value}
+								required
+							/>
 						</div>
-					</form>
-				</div>
+
+						<div className="col-auto">
+							<button type="submit" className="btn btn-primary mb-2">
+								Search
+							</button>
+						</div>
+					</div>
+				</form>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
 export default SearchBar;

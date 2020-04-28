@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/App.scss';
 //Components
 
@@ -8,26 +8,24 @@ import Content from './Content';
 
 //kelvin to celsius helper function
 
-class App extends React.Component {
-	state = { city: '' };
+const App = () => {
+	const [city, setCity] = useState('');
 
-	citySave = (city) => {
-		this.setState({ city: city });
+	const citySave = (city) => {
+		setCity(city);
 	};
 
-	render() {
-		return (
-			<div className="container-fluid">
-				<Header text="Joaquin Weather" />
-				<SearchBar
-					placeholder="Write a location..."
-					btnText="Search"
-					submit={this.citySave}
-				/>
-				<Content city={this.state.city} />
-			</div>
-		);
-	}
-}
+	return (
+		<div className="container-fluid">
+			<Header text="Joaquin Weather" />
+			<SearchBar
+				placeholder="Write a location..."
+				btnText="Search"
+				submit={citySave}
+			/>
+			<Content city={city} />
+		</div>
+	);
+};
 
 export default App;

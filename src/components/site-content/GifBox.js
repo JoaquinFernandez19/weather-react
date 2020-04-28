@@ -1,58 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const randomNumber = () => {
 	return Math.floor(Math.random() * 25);
 };
 
-class GifBox extends React.Component {
-	state = { gif: null, season: '', pending: true };
+const GifBox = (props) => {
+	const [gif, setGif] = useState('');
 
-	getGif = async (term) => {
+	const [pending, setPending] = useState(true);
+
+	const getGif = async (term) => {
 		try {
 			const response = await fetch(
 				`https://api.giphy.com/v1/gifs/search?q=${term}&api_key=FGcKWs04zti40C9Hyhxu4CRPtL7bADFx`,
 				{ mode: 'cors' },
 			);
 			const json = await response.json();
-			this.setState({
-				gif: json.data[randomNumber()].images.original.url,
-			});
+
+			setGif(json.data[randomNumber()].images.original.url);
 		} catch (error) {
 			console.log('problem with gif');
 		}
 	};
 
-	componentDidUpdate(prevProps) {
-		if (prevProps !== this.props) {
-			if (
-				this.props.gif === 'hot summer' ||
-				this.props.gif === 'freezing' ||
-				this.props.gif === 'chilling'
-			) {
-				this.getGif(this.props.gif);
-				this.setState({ pending: false });
-			}
+	useEffect(() => {
+		if (
+			props.gif === 'hot summer' ||
+			props.gif === 'freezing' ||
+			props.gif === 'chilling'
+		) {
+			console.log(props.gif);
+			getGif(props.gif);
+			setPending(false);
 		}
+	}, [props.gif]);
+
+	if (gif) {
+		return <img src={gif} className="img-fluid gif" alt="some-gif" />;
 	}
-	render() {
-		if (this.state.gif) {
-			return <img src={this.state.gif} className="img-fluid gif" />;
-		}
-		if (this.state.pending) {
-			return (
-				<div
-					className="d-flex align-items-center justify-content-center"
-					style={{ height: '15em' }}></div>
-			);
-		}
+	if (pending) {
 		return (
 			<div
 				className="d-flex align-items-center justify-content-center"
-				style={{ height: '15em' }}>
-				<div className="spinner-border " role="status"></div>
-			</div>
+				style={{ height: '15em' }}></div>
 		);
 	}
-}
+	return (
+		<div
+			className="d-flex align-items-center justify-content-center"
+			style={{ height: '15em' }}>
+			<div className="spinner-border " role="status"></div>
+		</div>
+	);
+};
 
 export default GifBox;
