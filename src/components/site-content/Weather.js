@@ -7,19 +7,12 @@ const Weather = (props) => {
 	const [pending, setPending] = useState(true);
 	const [weather, setWeather] = useState('');
 
-	// const [temp, setTemp] = useState('');
-	// const [wind, setWind] = useState('');
-	// const [general, setGeneral] = useState('');
-	// const [city, setCity] = useState('');
-	// const [humidity, setHumidity] = useState('');
-	// const [clouds, setClouds] = useState('');
-	// const [icon, setIcon] = useState('');
-
 	useEffect(() => {
 		if (props.data.temp) {
 			setPending(false);
 		}
 		setWeather({
+			icon: props.data.iconInfo,
 			temp: props.data.temp,
 			wind: props.data.wind,
 			general: props.data.general,
