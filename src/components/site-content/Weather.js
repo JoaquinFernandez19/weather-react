@@ -17,7 +17,7 @@ const Weather = (props) => {
 			wind: props.data.wind,
 			general: props.data.general,
 			city: props.data.city,
-			humidty: props.data.humidity,
+			humidity: props.data.humidity,
 			clouds: props.data.clouds,
 			props: props.data.iconInfo,
 		});
